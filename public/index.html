@@ -70,118 +70,25 @@
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
   </style>
-  <style>
-.code-flyer {
-  position: absolute;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.07);
-  white-space: nowrap;
-  user-select: none;
-  transform-origin: center;
-  animation-duration: 16s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-/* Floating animations */
-@keyframes float1 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(15px) rotate(-10deg); }
-}
-@keyframes float3 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-25px) rotate(5deg); }
-}
-
-.animate-float1 { animation-name: float1; }
-.animate-float2 { animation-name: float2; }
-.animate-float3 { animation-name: float3; }
-</style>
-
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
-
-  <div class="pointer-events-none absolute inset-0 z-0">
-  <div class="code-flyer left-[10%] top-[15%] animate-float1">{"<div>"}</div>
-  <div class="code-flyer left-[60%] top-[10%] animate-float2">{"function()"}</div>
-  <div class="code-flyer left-[40%] top-[70%] animate-float3">{"</>"}</div>
-  <div class="code-flyer left-[80%] top-[40%] animate-float1">{"{x: y}"}</div>
-</div>
-
   <!-- Navigation -->
- <nav class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 shadow-sm">
-  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    
-    <!-- Logo: hidden on small, visible from md screen -->
-    <div class="hidden md:block text-2xl font-bold text-primary-600 dark:text-primary-400">
-      Vivian Ndidi
-    </div>
+  <nav class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">VN</div>
+      <div class="flex items-center space-x-6">
+        <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400">About</a>
+        <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400">Experience</a>
+        <a href="#projects" class="hover:text-primary-600 dark:hover:text-primary-400">Projects</a>
+        <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+      
 
-    <!-- Hamburger Menu -->
-    <button id="menu-toggle" class="lg:hidden text-gray-700 dark:text-gray-200 focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-
-
-
-    <!-- Navigation Links -->
-    <div id="nav-links" class="hidden lg:flex lg:items-center lg:space-x-6 flex-col lg:flex-row mt-4 lg:mt-0">
-      <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400">About</a>
-      <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400">Experience</a>
-      <a href="#projects" class="hover:text-primary-600 dark:hover:text-primary-400">Projects</a>
-      <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
-
-      <!-- CV Dropdown -->
-      <div class="relative inline-block text-left mt-3 lg:mt-0">
-        <button id="download-cv" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-          Download CV
-        </button>
-        <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
-          <a href="Vivian_Ndidi_AKA_LinkedIn_Resume (1).pdf" download class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-            Professional CV
-          </a>
-          <a href="VIVIAN'S RESUME.pdf" download class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-            Academic CV
-          </a>
-        </div>
       </div>
     </div>
-  </div>
-</nav>
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  const cvButton = document.getElementById('download-cv');
-  const dropdownMenu = document.getElementById('dropdown-menu');
-
-  // Toggle navbar
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('hidden');
-  });
-
-  // Toggle CV dropdown
-  cvButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdownMenu.classList.toggle('hidden');
-  });
-
-  // Close dropdown on outside click
-  document.addEventListener('click', () => {
-    dropdownMenu.classList.add('hidden');
-  });
-</script>
-
+  </nav>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flyer-bg flex items-center justify-center relative overflow-hidden pt-20">
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
     <!-- Floating code snippets -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="code-zoom absolute left-10 top-1/4 text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
@@ -220,9 +127,19 @@
         </div>
       </div>
       <div class="flex justify-center space-x-4 mt-8">
-        <a href="#projects" class="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition shadow-lg hover:shadow-xl">
-          View Projects
-        </a>
+        <div class="relative inline-block text-left">
+          <button id="download-cv" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+            Download CV
+          </button>
+          <div id="dropdown-menu" class="dropdown absolute z-10 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
+            <a href="Vivian_Ndidi_AKA_LinkedIn_Resume (1).pdf" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" download>
+              Download Professional CV
+            </a>
+            <a href="VIVIAN'S RESUME.pdf" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" download>
+              Download Academic CV
+            </a>
+          </div>
+        </div>
         <a href="#contact" class="px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
           Contact Me
         </a>
@@ -231,7 +148,7 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 flyer-bg bg-gray-100 dark:bg-gray-800">
+  <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-center gap-12">
         <div class="lg:w-1/3">
@@ -291,7 +208,7 @@
   </section>
 
  <!-- Experience Section -->
-<section id="experience" class="py-20 flyer-bg bg-white dark:bg-gray-900">
+<section id="experience" class="py-20 bg-white dark:bg-gray-900">
   <div class="container mx-auto px-6">
     <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
     
@@ -336,7 +253,7 @@
               <div class="flex justify-between items-start">
                 <div>
                   <h3 class="text-xl font-bold mb-1">Case Manager (Part-Time)</h3>
-                  <p class="text-primary-600 dark:text-primary-400 mb-2">Catholic Relief Services | Aug 2020 – 2021</p>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">Catholic Relief Services | Aug 2020 – Present</p>
                 </div>
                 <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Nigeria</span>
               </div>
@@ -360,7 +277,7 @@
               <div class="flex justify-between items-start">
                 <div>
                   <h3 class="text-xl font-bold mb-1">Program Staff</h3>
-                  <p class="text-primary-600 dark:text-primary-400 mb-2">First Step Action and Children Initiative | Sept 2017 – 2020</p>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">First Step Action and Children Initiative | Sept 2017 – Present</p>
                 </div>
                 <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Nasarawa, Nigeria</span>
               </div>
@@ -384,7 +301,7 @@
               <div class="flex justify-between items-start">
                 <div>
                   <h3 class="text-xl font-bold mb-1">Household Economic Strengthening Officer</h3>
-                  <p class="text-primary-600 dark:text-primary-400 mb-2">Non-Profit Organization | May 2016 – 2017</p>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">Non-Profit Organization | May 2016 – Present</p>
                 </div>
                 <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Lafia, Nigeria</span>
               </div>
@@ -401,7 +318,7 @@
   </div>
 </section>
   <!-- Projects Section -->
-  <section id="projects" class="py-20 flyer-bg bg-gray-100 dark:bg-gray-800">
+  <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-4">Data Analysis Projects</h2>
       <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
@@ -487,7 +404,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 flyer-bg bg-white dark:bg-gray-900">
+  <section id="contact" class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-6 max-w-6xl">
       <h2 class="text-3xl font-bold text-center mb-12">Let's Connect</h2>
       <div class="flex flex-col lg:flex-row gap-12">
