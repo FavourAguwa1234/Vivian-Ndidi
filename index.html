@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivian Ndidi | Data Analyst</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- SwiperJS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #60a5fa;
+    }
+
+    /* Code zoom animation */
+    .code-zoom {
+      transition: all 0.5s ease-out;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    /* Modal transition */
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    /* Project card hover effect */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .dark .project-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown {
+      display: none;
+    }
+    .dropdown.show {
+      display: block;
+    }
+    
+    /* Smooth theme transition */
+    body, .bg-white, .bg-gray-100, .bg-gray-50, .bg-primary-100, 
+    .border-gray-200, .border-gray-300, .text-gray-600, .text-gray-700,
+    .text-gray-800, .bg-gray-700, .bg-gray-800, .bg-gray-900, .bg-primary-900,
+    .border-gray-600, .border-gray-700, .text-gray-300, .text-gray-400,
+    .dark\:bg-gray-700, .dark\:bg-gray-800, .dark\:bg-gray-900, .dark\:bg-primary-900,
+    .dark\:border-gray-600, .dark\:border-gray-700, .dark\:text-gray-300, .dark\:text-gray-400 {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">Vivian Ndidi</div>
+      <div class="flex items-center space-x-6">
+        <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400">About</a>
+        <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400">Experience</a>
+        <a href="#projects" class="hover:text-primary-600 dark:hover:text-primary-400">Projects</a>
+        <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+        <div class="relative inline-block text-left">
+          <button id="download-cv" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+            Download CV
+          </button>
+          <div id="dropdown-menu" class="dropdown absolute z-10 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
+            <a href="Vivian_Ndidi_AKA_LinkedIn_Resume (1).pdf" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" download>
+              Download Professional CV
+            </a>
+            <a href="VIVIAN'S RESUME.pdf" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" download>
+              Download Academic CV
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <!-- Floating code snippets -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="code-zoom absolute left-10 top-1/4 text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <span class="text-blue-500">SELECT</span> * <span class="text-blue-500">FROM</span> community_data<br>
+        <span class="text-blue-500">WHERE</span> impact = 'high';
+      </div>
+      <div class="code-zoom absolute right-20 top-1/3 text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <span class="text-purple-500">df</span> = pd.read_csv('health_data.csv')<br>
+        <span class="text-purple-500">df</span>.groupby('region').mean()
+      </div>
+      <div class="code-zoom absolute left-1/4 bottom-1/3 text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <span class="text-yellow-500">Impact</span> = <br>
+        <span class="text-green-500">SUM</span>(Projects[Beneficiaries])
+      </div>
+      <div class="code-zoom absolute right-1/3 bottom-1/4 text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <span class="text-red-500">plt</span>.plot(x, y)<br>
+        <span class="text-red-500">plt</span>.title('Program Outcomes')
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 text-center z-10">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        <span class="text-primary-600 dark:text-primary-400">Vivian Ndidi</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Data Analyst | Program Officer | Case Manager | Combining Data Skills with Humanitarian Impact
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <div class="flex items-center">
+          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+          <span>08060980573</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+          <span>07014867255</span>
+        </div>
+      </div>
+      <div class="flex justify-center space-x-4 mt-8">
+        <a href="#projects" class="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition shadow-lg hover:shadow-xl">
+          View Projects
+        </a>
+        <a href="#contact" class="px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="lg:w-1/3">
+          <img src="hero.jpeg" 
+               alt="Vivian Ndidi" 
+               class="rounded-xl shadow-2xl w-full max-w-md mx-auto">
+        </div>
+        <div class="lg:w-2/3">
+          <h2 class="text-3xl font-bold mb-6">About Me</h2>
+          <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
+            Passionate and data-driven professional with over 7 years of experience in program implementation, 
+            case management, and community development. I bring a unique blend of technical and humanitarian 
+            expertise, having supported vulnerable populations through data analysis, economic strengthening 
+            initiatives, and psychosocial services.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">Education</h3>
+              <ul class="space-y-4">
+                <li>
+                  <h4 class="font-medium">Bachelor of Science (BSc), Sociology</h4>
+                  <p class="text-gray-600 dark:text-gray-400">University of Abuja | 2011-2015</p>
+                </li>
+                <li>
+                  <h4 class="font-medium">Diploma in Law</h4>
+                  <p class="text-gray-600 dark:text-gray-400">University of Abuja | 2007-2009</p>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">Core Skills</h3>
+              <ul class="space-y-4">
+                <li>
+                  <h4 class="font-medium">Python Programming & Data Structures</h4>
+                </li>
+                <li>
+                  <h4 class="font-medium">Case Management & Community Linkages</h4>
+                </li>
+                <li>
+                  <h4 class="font-medium">Monitoring & Evaluation (M&E)</h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">Python</span>
+            <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">Data Analysis</span>
+            <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">Case Management</span>
+            <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">Community Development</span>
+            <span class="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">Program Implementation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Experience Section -->
+<section id="experience" class="py-20 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
+    
+    <div class="relative max-w-4xl mx-auto">
+      <!-- Timeline line -->
+      <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2"></div>
+      
+      <!-- Experience Items -->
+      <div class="space-y-12">
+        <!-- Experience 1 -->
+        <div class="relative flex">
+          <!-- Timeline dot -->
+          <div class="absolute left-4 md:left-1/2 h-4 w-4 rounded-full bg-primary-600 dark:bg-primary-400 transform -translate-x-1/2 -translate-y-1 z-10"></div>
+          
+          <!-- Experience card -->
+          <div class="ml-10 md:ml-0 md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-bold mb-1">Data Analyst (Intern)</h3>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">Gateway Computer Institute | Sept 2024 – Present</p>
+                </div>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Nigeria</span>
+              </div>
+              <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Analyzing structured datasets using Python and basic data structures</li>
+                <li>Assisting in the preparation of dashboards and performance metrics</li>
+                <li>Supporting real-world projects focused on educational and community data</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Experience 2 -->
+        <div class="relative flex md:justify-end">
+          <!-- Timeline dot -->
+          <div class="absolute left-4 md:left-1/2 h-4 w-4 rounded-full bg-primary-600 dark:bg-primary-400 transform -translate-x-1/2 -translate-y-1 z-10"></div>
+          
+          <!-- Experience card -->
+          <div class="ml-10 md:mr-0 md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-bold mb-1">Case Manager (Part-Time)</h3>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">Catholic Relief Services | Aug 2020 – Present</p>
+                </div>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Nigeria</span>
+              </div>
+              <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Managing a caseload of vulnerable individuals for HIV testing and follow-up care</li>
+                <li>Conducting household visits and linking clients to health services and support</li>
+                <li>Providing psychosocial support, referral coordination, and client tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Experience 3 -->
+        <div class="relative flex">
+          <!-- Timeline dot -->
+          <div class="absolute left-4 md:left-1/2 h-4 w-4 rounded-full bg-primary-600 dark:bg-primary-400 transform -translate-x-1/2 -translate-y-1 z-10"></div>
+          
+          <!-- Experience card -->
+          <div class="ml-10 md:ml-0 md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-bold mb-1">Program Staff</h3>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">First Step Action and Children Initiative | Sept 2017 – Present</p>
+                </div>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Nasarawa, Nigeria</span>
+              </div>
+              <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Implementing child protection and welfare programs</li>
+                <li>Engaging communities in awareness and outreach campaigns</li>
+                <li>Supporting M&E and documentation of project activities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Experience 4 -->
+        <div class="relative flex md:justify-end">
+          <!-- Timeline dot -->
+          <div class="absolute left-4 md:left-1/2 h-4 w-4 rounded-full bg-primary-600 dark:bg-primary-400 transform -translate-x-1/2 -translate-y-1 z-10"></div>
+          
+          <!-- Experience card -->
+          <div class="ml-10 md:mr-0 md:w-1/2 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <div class="flex flex-col">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-bold mb-1">Household Economic Strengthening Officer</h3>
+                  <p class="text-primary-600 dark:text-primary-400 mb-2">Non-Profit Organization | May 2016 – Present</p>
+                </div>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Lafia, Nigeria</span>
+              </div>
+              <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700 dark:text-gray-300">
+                <li>Facilitating savings groups (VSLA) and community food banks</li>
+                <li>Leading agricultural training, home gardening, and cash transfer activities</li>
+                <li>Enrolling older out-of-school youth into vocational training and apprenticeships</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">Data Analysis Projects</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+        Applying data skills to humanitarian and social impact initiatives
+      </p>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Project 1 -->
+        <div class="project-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
+          <img src="template/1.jpg" 
+               alt="Community Data Analysis" 
+               class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Community Impact Dashboard</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Python analysis of community program outcomes with visualization of key metrics.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Pandas</span>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Matplotlib</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
+          <img src="template/2.jpg" 
+               alt="Health Data Analysis" 
+               class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Health Program Analytics</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Analysis of health intervention outcomes and service utilization patterns.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">Excel</span>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">Data Cleaning</span>
+              <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm">Visualization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
+          <img src="template/3.jpg" 
+               alt="Economic Impact" 
+               class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Economic Impact Assessment</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Evaluating the impact of VSLA programs on household economic stability.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Survey Data</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Statistical Analysis</span>
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Report Writing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
+          <img src="template/4.jpg" 
+               alt="Education Analysis" 
+               class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Education Program Evaluation</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">Analyzing student performance data to assess program effectiveness.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">SQL</span>
+              <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-sm">Tableau</span>
+              <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm">Data Modeling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="projects.html" class="px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition inline-flex items-center">
+          View More Projects
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-3xl font-bold text-center mb-12">Let's Connect</h2>
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Contact Form -->
+        <div class="lg:w-1/2 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                <input type="text" id="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                <input type="email" id="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700">
+              </div>
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+              <input type="text" id="subject" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+              <textarea id="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700"></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition">
+              Send Message
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="lg:w-1/2 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-lg">Location</h4>
+                <p class="text-gray-600 dark:text-gray-400">Nigeria</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-lg">Phone</h4>
+                <p class="text-gray-600 dark:text-gray-400">+234 806 098 0573</p>
+                <p class="text-gray-600 dark:text-gray-400">+234 701 486 7255</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-lg">LinkedIn</h4>
+                <a href="https://linkedin.com/in/vivian-ndidi-a3a0bb168" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400">
+                  linkedin.com/in/vivian-ndidi
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-lg">Email</h4>
+                <p class="text-gray-600 dark:text-gray-400">ndidivivian23@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <button id="contact-modal-btn" class="w-full px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+              Contact Me Directly
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Method Modal -->
+  <div id="contactModal" class="modal fixed inset-0 bg-black/50 z-50 flex items-center justify-center opacity-0 invisible transition-opacity duration-300">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 max-w-md w-full mx-4">
+      <h3 class="text-2xl font-bold mb-4">Choose Contact Method</h3>
+      <p class="mb-6 text-gray-600 dark:text-gray-300">How would you like to get in touch?</p>
+      
+      <div class="space-y-4">
+        <button id="emailBtn" class="w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg flex items-center">
+          <svg class="w-6 h-6 mr-3 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <span>Send via Email</span>
+        </button>
+        
+        <button id="whatsappBtn" class="w-full px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg flex items-center">
+          <svg class="w-6 h-6 mr-3 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span>Send via WhatsApp</span>
+        </button>
+      </div>
+      
+      <div id="emailUnavailable" class="hidden mt-4 p-3 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-lg">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        Email is not available right now. Please try WhatsApp instead.
+      </div>
+      
+      <button id="closeModal" class="mt-6 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+        <div class="flex items-center">
+          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+          <span>08060980573</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-whatsapp text-green-500 mr-2"></i>
+          <span>07014867255</span>
+        </div>
+      </div>
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://linkedin.com/in/vivian-ndidi-a3a0bb168" target="_blank" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+          <i class="fab fa-linkedin-in text-xl"></i>
+        </a>
+        <a href="mailto:ndidivivian23@gmail.com" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+          <i class="fas fa-envelope text-xl"></i>
+        </a>
+      </div>
+      <p>© 2025 Vivian Ndidi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper
+    const swiper = new Swiper('.projectSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+
+    // Dark/Light mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Check for saved preference or system preference
+    const storedTheme = localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    if (storedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+      localStorage.setItem('theme', 'light');
+    }
+
+    themeToggle.addEventListener('click', function() {
+      // Toggle icons
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      
+      // Toggle theme
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // GSAP Animations for code zoom effect
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate code snippets on scroll
+    document.querySelectorAll('.code-zoom').forEach((el, i) => {
+      gsap.to(el, {
+        opacity: 0.3,
+        scale: 1,
+        scrollTrigger: {
+          trigger: "nav",
+          start: "top center",
+          end: "bottom center",
+          scrub: true
+        }
+      });
+    });
+
+    // Contact Form Modal Logic
+    const contactForm = document.getElementById('contactForm');
+    const contactModal = document.getElementById('contactModal');
+    const contactModalBtn = document.getElementById('contact-modal-btn');
+    const emailBtn = document.getElementById('emailBtn');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const closeModal = document.getElementById('closeModal');
+    const emailUnavailable = document.getElementById('emailUnavailable');
+
+    // Show modal when contact button is clicked
+    contactModalBtn.addEventListener('click', function() {
+      contactModal.classList.remove('invisible', 'opacity-0');
+      contactModal.classList.add('opacity-100');
+    });
+
+    // Email option
+    emailBtn.addEventListener('click', function() {
+      const mailtoLink = `mailto:ndidivivian23@gmail.com?subject=${encodeURIComponent("Contact Request")}`;
+      window.location.href = mailtoLink;
+      closeModal.click();
+    });
+
+    // WhatsApp option
+    whatsappBtn.addEventListener('click', function() {
+      const whatsappMessage = `Hello Vivian, I'd like to get in touch with you regarding...`;
+      const whatsappLink = `https://wa.me/2348060980573?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappLink, '_blank');
+      closeModal.click();
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', function() {
+      contactModal.classList.remove('opacity-100');
+      contactModal.classList.add('opacity-0', 'invisible');
+      emailUnavailable.classList.add('hidden');
+    });
+
+    // CV Download Dropdown
+    const downloadBtn = document.getElementById('download-cv');
+    const dropdown = document.getElementById('dropdown-menu');
+
+    downloadBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!downloadBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+    
+    // Form submission
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      contactForm.reset();
+    });
+    
+    // Check for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      const newColorScheme = e.matches ? 'dark' : 'light';
+      if (newColorScheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>
